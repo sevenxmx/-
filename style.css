@@ -1,0 +1,1479 @@
+/* ============================================================
+   Apple 风格 + 液态玻璃 + 黑白暗黑主题
+   仅用于手机端走位之巅
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    background: #1c1c1e;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+    background: #1c1c1e;
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    line-height: 1.4;
+    font-weight: 500;
+    font-size: 15px;
+    overscroll-behavior-y: none;
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    padding: calc(env(safe-area-inset-top, 0px) + 24px) 16px 100px;
+    background:
+        radial-gradient(circle at 15% 0%, rgba(255,255,255,0.06), transparent 40%),
+        linear-gradient(180deg, #1c1c1e 0%, #161618 100%);
+}
+
+.page {
+    display: none;
+    animation: fadeIn .28s cubic-bezier(.25,.46,.45,.94);
+}
+
+.page.active {
+    display: block;
+}
+
+.page-sub {
+    padding-bottom: 30px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== 头部 ===== */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 16px;
+}
+
+.app-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.06);
+    color: #ffffff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform .15s cubic-bezier(.25,.46,.45,.94), background .15s;
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+}
+
+.icon-btn:active {
+    transform: scale(.94);
+}
+
+/* ===== 加载提示 ===== */
+.load-status {
+    text-align: center;
+    color: #aeaeb2;
+    font-size: 14px;
+    padding: 12px;
+    display: none;
+}
+
+.load-status.show {
+    display: block;
+}
+
+/* ===== 卡片 ===== */
+.card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 28px;
+    padding: 20px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    box-shadow: 0 8px 32px rgba(0,0,0,.45);
+}
+
+.card-title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* ===== 按钮 ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 40px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform .15s cubic-bezier(.25,.46,.45,.94), opacity .15s, background .15s;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.btn:active {
+    transform: scale(.94);
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+}
+
+.btn-lg {
+    padding: 13px 20px;
+    font-size: 16px;
+}
+
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 13px;
+}
+
+.btn-primary {
+    background: #ffffff;
+    color: #000000;
+    box-shadow: 0 8px 24px rgba(255,255,255,.18);
+}
+
+.btn-glass {
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.08);
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: none;
+}
+
+.btn-danger {
+    background: rgba(255,69,58,.18);
+    color: #ff6961;
+    border: 1px solid rgba(255,69,58,.25);
+    box-shadow: none;
+}
+
+/* ===== 表单 ===== */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #aeaeb2;
+    margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.06);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: border-color .15s;
+}
+
+.form-group select {
+    background-image: linear-gradient(45deg, transparent 50%, #fff 50%), linear-gradient(135deg, #fff 50%, transparent 50%);
+    background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%;
+    background-size: 6px 6px;
+    background-repeat: no-repeat;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: rgba(255,255,255,.55);
+}
+
+.form-group input::placeholder {
+    color: #48484a;
+}
+
+select option {
+    background: #2c2c2e;
+    color: #fff;
+}
+
+/* ===== 日历 ===== */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0 14px;
+}
+
+.month-year {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: #8e8e93;
+    padding: 4px 0 8px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+}
+
+.day-cell {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.03);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform .15s cubic-bezier(.25,.46,.45,.94), background .15s;
+    min-height: 48px;
+    padding: 2px;
+}
+
+.day-cell.empty {
+    background: transparent;
+    border-color: transparent;
+    pointer-events: none;
+}
+
+.day-cell.today {
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.16);
+}
+
+.day-cell.future-disabled {
+    background: rgba(255,255,255,0.02);
+    border-color: rgba(255,255,255,0.02);
+    color: rgba(255,255,255,0.2);
+    pointer-events: none;
+    cursor: default;
+}
+
+.day-cell.future-disabled .day-number {
+    color: rgba(255,255,255,0.25);
+}
+
+.day-cell:active {
+    transform: scale(.94);
+}
+
+.day-number {
+    position: relative;
+    z-index: 2;
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.2;
+}
+
+.day-cell.checkin-only .day-number {
+    color: #8e8e93;
+}
+
+.day-cell.has-winner {
+    background: #2c2c2e;
+    padding: 0;
+    overflow: visible;
+    z-index: 6;
+}
+
+.day-cover {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+.day-cover img,
+.day-cover .winner-avatar.avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+}
+
+.day-cover .winner-avatar.avatar-emoji {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 0;
+    font-size: 42px;
+    line-height: 1;
+    text-shadow: 0 4px 12px rgba(0,0,0,.3);
+}
+
+.winner-crown {
+    position: absolute;
+    top: -8px;
+    right: -6px;
+    transform: rotate(22deg);
+    z-index: 7;
+    font-size: 17px;
+    line-height: 1;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,.8));
+    transform-origin: top right;
+}
+
+.checkin-icon {
+    display: none;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.today-status {
+    font-size: 13px;
+    color: #8e8e93;
+    text-align: center;
+    margin-top: 14px;
+}
+
+/* ===== 底部导航 ===== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 480px;
+    width: 100%;
+    background: rgba(28,28,30,.75);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border-top: 1px solid rgba(255,255,255,.06);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0 max(8px, env(safe-area-inset-bottom));
+    z-index: 100;
+}
+
+.bottom-nav.hidden {
+    display: none;
+}
+
+.nav-item {
+    background: none;
+    border: none;
+    color: #8e8e93;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 4px 18px;
+    cursor: pointer;
+    transition: color .15s, transform .15s;
+}
+
+.nav-item i {
+    font-size: 22px;
+}
+
+.nav-item.active {
+    color: #ffffff;
+}
+
+.nav-item:active {
+    transform: scale(.94);
+}
+
+/* ===== 统计 ===== */
+.stats-overview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 24px;
+    padding: 18px 12px;
+    text-align: center;
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+}
+
+.stat-card .stat-icon {
+    font-size: 26px;
+    line-height: 1.2;
+    margin-bottom: 4px;
+}
+
+.stat-card .stat-number {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.stat-card .stat-label {
+    font-size: 13px;
+    color: #8e8e93;
+    margin-top: 4px;
+}
+
+.player-stat-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    cursor: pointer;
+    transition: opacity .15s;
+}
+
+.player-stat-item:last-child {
+    border-bottom: none;
+}
+
+.player-stat-item:active {
+    opacity: .6;
+}
+
+.player-stat-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.pname {
+    font-weight: 500;
+}
+
+.player-stat-right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    font-size: 14px;
+    color: #aeaeb2;
+}
+
+.player-stat-right .wins {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.hint {
+    font-size: 12px;
+    color: #48484a;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* ===== 头像通用 ===== */
+.avatar-sm,
+.avatar-big,
+.avatar-emoji,
+.avatar-image {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.avatar-sm {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+}
+
+.avatar-stat {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.avatar-stat img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.avatar-big {
+    width: 56px;
+    height: 56px;
+    font-size: 34px;
+}
+
+.avatar-sm img,
+.avatar-big img,
+.avatar-emoji img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.avatar-emoji {
+    background: rgba(255,255,255,.08);
+}
+
+/* ===== 人物选择 ===== */
+.person-select-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+    gap: 10px;
+}
+
+.person-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.04);
+    border-radius: 20px;
+    padding: 14px 4px;
+    cursor: pointer;
+    transition: transform .15s cubic-bezier(.25,.46,.45,.94), background .15s, border-color .15s;
+}
+
+.person-option.selected {
+    background: rgba(255,255,255,.14);
+    border-color: rgba(255,255,255,.45);
+}
+
+.person-option.disabled {
+    opacity: .3;
+    pointer-events: none;
+    filter: grayscale(.4);
+}
+
+.person-option:active {
+    transform: scale(.94);
+}
+
+.pname {
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    word-break: break-all;
+    line-height: 1.2;
+    width: 100%;
+}
+
+/* ===== 子页头部 ===== */
+.page-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding: 8px 0 16px;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.page-head h2 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.head-space {
+    width: 40px;
+}
+
+.back-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* ===== 比赛进行页 ===== */
+.scoreboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+    padding: 24px 10px;
+}
+
+.player-score {
+    flex: 1;
+}
+
+.player-avatar {
+    font-size: 44px;
+    margin-bottom: 6px;
+    min-height: 44px;
+}
+
+.player-avatar img,
+.player-avatar .avatar-emoji {
+    width: 60px;
+    height: 60px;
+    font-size: 38px;
+}
+
+.player-name {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.score-num {
+    font-size: 34px;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+.vs {
+    color: #8e8e93;
+    font-size: 14px;
+    padding: 0 8px;
+}
+
+.game-number {
+    text-align: center;
+    color: #8e8e93;
+    font-size: 14px;
+    margin: -6px 0 16px;
+}
+
+.game-winner-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0 12px;
+}
+
+.row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+}
+
+.game-history {
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.04);
+    border-radius: 20px;
+    padding: 14px;
+    margin-bottom: 20px;
+    max-height: 140px;
+    overflow-y: auto;
+    font-size: 13px;
+    color: #aeaeb2;
+    line-height: 1.7;
+}
+
+/* 直接输入比分 */
+.quick-score-card {
+    margin-top: 4px;
+}
+
+.quick-score-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0 16px;
+}
+
+.quick-side {
+    flex: 1;
+    text-align: center;
+    background: rgba(255,255,255,.04);
+    border-radius: 20px;
+    padding: 12px 6px;
+}
+
+.quick-player {
+    font-size: 32px;
+    min-height: 36px;
+}
+
+.quick-player img,
+.quick-player .avatar-emoji {
+    width: 48px;
+    height: 48px;
+    font-size: 28px;
+}
+
+.quick-label {
+    font-size: 13px;
+    color: #aeaeb2;
+    margin: 6px 0 4px;
+}
+
+.quick-side input {
+    width: 80px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255,255,255,.2);
+    color: #ffffff;
+    padding: 2px 0;
+    font-family: inherit;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.quick-side input:focus {
+    border-color: #ffffff;
+}
+
+.quick-colon {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+/* ===== 玩家历史 ===== */
+.player-profile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+}
+
+.player-profile .profile-avatar {
+    width: 56px;
+    height: 56px;
+    font-size: 34px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.player-profile img.profile-avatar {
+    object-fit: cover;
+}
+
+.player-profile .profile-name {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.match-list .match-item {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 24px;
+    padding: 16px;
+    margin-bottom: 12px;
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+}
+
+.match-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.match-vs {
+    flex: 1;
+    text-align: center;
+}
+
+.match-vs .names {
+    font-weight: 600;
+}
+
+.match-vs .meta {
+    font-size: 12px;
+    color: #8e8e93;
+    margin-top: 4px;
+}
+
+.match-score {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.match-result {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #aeaeb2;
+}
+
+.match-result.win {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.match-result.lose {
+    color: #8e8e93;
+}
+
+.match-result.draw {
+    color: #aeaeb2;
+}
+
+/* ===== 模态框 ===== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 300;
+    padding: 20px 12px;
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+.modal {
+    background: rgba(44,44,46,.86);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 28px;
+    width: 100%;
+    max-width: 440px;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 22px 20px calc(22px + env(safe-area-inset-bottom));
+    box-shadow: 0 24px 64px rgba(0,0,0,.7);
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+    animation: fadeIn .28s cubic-bezier(.25,.46,.45,.94);
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.modal-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.modal-close {
+    background: rgba(255,255,255,.08);
+    border: none;
+    color: #fff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform .15s;
+}
+
+.modal-close:active {
+    transform: scale(.92);
+}
+
+.modal-victory {
+    text-align: center;
+    padding: 32px 24px;
+}
+
+.victory-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#victoryAvatar {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 16px;
+}
+
+#victoryAvatar img,
+#victoryAvatar .avatar-emoji {
+    width: 120px;
+    height: 120px;
+    font-size: 76px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 16px 40px rgba(0,0,0,.5);
+}
+
+#victoryTitle {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+#victoryDetail {
+    color: #aeaeb2;
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+/* ===== 人物管理 ===== */
+.avatar-upload-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.avatar-preview {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.avatar-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-upload-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.avatar-picker {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.avatar-option {
+    font-size: 28px;
+    width: 44px;
+    height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255,255,255,.05);
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform .15s, background .15s, border-color .15s;
+}
+
+.avatar-option.selected {
+    background: rgba(255,255,255,.15);
+    border-color: rgba(255,255,255,.5);
+}
+
+.avatar-option:active {
+    transform: scale(.92);
+}
+
+.person-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 40px;
+    padding: 5px 10px 5px 6px;
+    margin: 0 8px 8px 0;
+}
+
+.person-tag .tag-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    border-radius: 50%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.person-tag .tag-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.person-tag .tag-name {
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.person-tag button {
+    background: none;
+    border: none;
+    color: #ff6961;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    padding: 0;
+}
+
+.divider {
+    height: 1px;
+    background: rgba(255,255,255,.08);
+    margin: 20px 0;
+}
+
+/* ===== 空状态 ===== */
+.empty-state {
+    text-align: center;
+    padding: 30px 0;
+    color: #8e8e93;
+}
+
+.empty-state .icon {
+    font-size: 44px;
+    margin-bottom: 8px;
+}
+
+/* ===== Toast ===== */
+.toast {
+    position: fixed;
+    bottom: 110px;
+    left: 50%;
+    transform: translate(-50%, 20px);
+    background: rgba(44,44,46,.94);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 40px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s, transform .2s;
+    z-index: 500;
+    max-width: 80%;
+    text-align: center;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+/* ===== 滚动条 ===== */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444446;
+    border-radius: 12px;
+}
+
+/* ===== 响应式 ===== */
+@media (max-width: 360px) {
+    #app {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    .day-cell {
+        min-height: 40px;
+        border-radius: 14px;
+    }
+    .day-cover .avatar-emoji {
+        font-size: 30px;
+    }
+    .person-select-grid {
+        grid-template-columns: repeat(auto-fill, minmax(62px, 1fr));
+    }
+}
+
+/* ===== 通用比赛条目（也用于日期详情） ===== */
+.match-item {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 24px;
+    padding: 16px;
+    margin-bottom: 12px;
+    backdrop-filter: blur(40px) saturate(180%);
+    -webkit-backdrop-filter: blur(40px) saturate(180%);
+}
+
+.match-list .match-item {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.match-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.match-vs {
+    flex: 1;
+    text-align: center;
+}
+
+.match-vs .names {
+    font-weight: 600;
+}
+
+.match-vs .meta {
+    font-size: 12px;
+    color: #8e8e93;
+    margin-top: 4px;
+}
+
+.match-score {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.match-result {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #aeaeb2;
+}
+
+.match-result.win {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.match-result.lose {
+    color: #8e8e93;
+}
+
+.match-result.draw {
+    color: #aeaeb2;
+}
+
+.detail-top {
+    margin-bottom: 14px;
+    min-height: 36px;
+}
+
+.detail-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    background: rgba(255,255,255,.08);
+    border-radius: 40px;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.match-count {
+    font-size: 13px;
+    color: #8e8e93;
+    margin-bottom: 10px;
+}
+
+.mt {
+    margin-top: 12px;
+}
+
+.page-content .form-group label {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+#btnFinishMatch {
+    margin-top: 4px;
+    margin-bottom: 24px;
+}
+
+/* ===== 比赛进行页紧凑布局 ===== */
+#pageMatchPlay .page-content .card {
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+#pageMatchPlay .scoreboard {
+    padding: 12px 8px;
+}
+
+#pageMatchPlay .player-avatar img,
+#pageMatchPlay .player-avatar .avatar-emoji {
+    width: 48px;
+    height: 48px;
+    font-size: 30px;
+}
+
+#pageMatchPlay .score-num {
+    font-size: 26px;
+}
+
+#pageMatchPlay .player-name {
+    font-size: 14px;
+}
+
+#pageMatchPlay .game-number {
+    margin: 2px 0 8px;
+    font-size: 13px;
+}
+
+#pageMatchPlay .game-winner-buttons {
+    margin: 8px 0;
+    gap: 8px;
+}
+
+#pageMatchPlay .btn {
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+#pageMatchPlay #btnUndoGame {
+    margin-bottom: 10px;
+}
+
+#pageMatchPlay .game-history {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    max-height: 76px;
+    min-height: 30px;
+}
+
+#pageMatchPlay .quick-score-card .card-title {
+    font-size: 15px;
+    margin-bottom: 6px;
+}
+
+#pageMatchPlay .quick-score-row {
+    margin: 6px 0 8px;
+    gap: 8px;
+}
+
+#pageMatchPlay .quick-side {
+    padding: 6px 4px;
+    border-radius: 16px;
+}
+
+#pageMatchPlay .quick-player img,
+#pageMatchPlay .quick-player .avatar-emoji {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+}
+
+#pageMatchPlay .quick-label {
+    font-size: 12px;
+    margin: 3px 0 2px;
+}
+
+#pageMatchPlay .quick-side input {
+    width: 64px;
+    font-size: 20px;
+}
+
+#pageMatchPlay #btnFinishMatch {
+    margin-top: 2px;
+    margin-bottom: 12px;
+}
+
+#pageMatchPlay .hint {
+    margin-top: 6px;
+}
+
+/* ===== 头像图片强制正圆/不拉伸 ===== */
+img.avatar-image {
+    display: inline-block !important;
+    object-fit: cover !important;
+}
+
+img.avatar-stat {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+}
+
+img.avatar-sm {
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+}
+
+img.avatar-big {
+    width: 56px !important;
+    height: 56px !important;
+    border-radius: 50% !important;
+}
+
+/* ===== 强制统计左侧头像为 40x40 正圆 ===== */
+.player-stat-left .avatar-stat,
+.player-stat-left img.avatar-stat {
+    
+    width: 40px !important;
+    min-width: 40px !important;
+    max-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    max-height: 40px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    flex: 0 0 40px !important;
+    overflow: hidden;
+}
+.player-stat-left img.avatar-image {
+    display: block !important;
+}
+
+/* ===== 现有人物列表统一对齐 ===== */
+#personList {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+#personList .person-tag {
+    margin: 0;
+}
+
+.app-logo {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: -10px;
+}
+
+/* ===== 头像裁剪弹窗 ===== */
+.modal-crop {
+    max-width: 420px;
+}
+
+.crop-tip {
+    text-align: center;
+    color: #aeaeb2;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.avatar-crop-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+    position: relative;
+}
+
+.avatar-crop-circle {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    max-width: 70vw;
+    max-height: 70vw;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #111;
+    border: 2px solid rgba(255,255,255,.25);
+    box-shadow: 0 0 0 4px rgba(255,255,255,.06), 0 16px 40px rgba(0,0,0,.6);
+    touch-action: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+#avatarCropImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    max-width: none;
+    max-height: none;
+    transform-origin: 0 0;
+    pointer-events: none;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.crop-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.crop-actions .btn {
+    flex: 1;
+}
